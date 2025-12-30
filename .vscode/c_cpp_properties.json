@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux Kernel",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/src/linux-headers-6.8.0-87-generic/include",
+                "/usr/src/linux-headers-6.8.0-87-generic/include/uapi",
+                "/usr/src/linux-headers-6.8.0-87-generic/arch/x86/include",
+                "/usr/src/linux-headers-6.8.0-87-generic/arch/x86/include/uapi",
+                "/usr/src/linux-headers-6.8.0-87-generic/arch/x86/include/generated"
+            ],
+            "defines": [
+                "__KERNEL__",          // ★ 必须（告诉 VSCode 这是内核代码）
+                "MODULE"               // ★ 必须（启用 module_init/module_exit 宏）
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
