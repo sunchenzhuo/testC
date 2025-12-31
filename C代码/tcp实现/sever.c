@@ -2,7 +2,7 @@
  * @Author: shuxiansheng shuxianshengio@126.com
  * @Date: 2025-12-30 14:28:00
  * @LastEditors: shuxiansheng shuxianshengio@126.com
- * @LastEditTime: 2025-12-30 15:17:40
+ * @LastEditTime: 2025-12-31 09:48:49
  * @FilePath: /代码/C代码/tcp实现/sever.c
  * @Description: 
  */
@@ -58,10 +58,29 @@ int main(int argc, char const *argv[])
         bzero((void *)buf,BUFSIZE);
         do
         {
-            
-        } while (condition);
-        
+            ret=read(newfd,(void *)buf,BUFSIZE-1);
+        } while (ret<0&&EINTR==errno);
+        if (ret<0)
+        {
+            perror("read: ");
+            exit(-1);
+        }
+        if (ret==0)
+        {
+            printf("client closed...\n");
+            break;
+        }
+        printf("re:%s\n",buf);
+        if (strncasecmp(buf,USER_QUIT,strlen(USER_QUIT))==0)
+        {
+            printf("client choice break link!\n");
+            break;
+        }
     }
+    
+    /*******关闭网络********/
+    close(newfd);
+    close(fd);
     
     return 0;
 }
