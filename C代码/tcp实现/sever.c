@@ -1,3 +1,11 @@
+/*
+ * @Author: shuxiansheng shuxianshengio@126.com
+ * @Date: 2025-12-30 14:28:00
+ * @LastEditors: shuxiansheng shuxianshengio@126.com
+ * @LastEditTime: 2025-12-30 15:17:40
+ * @FilePath: /代码/C代码/tcp实现/sever.c
+ * @Description: 
+ */
 #include "net.h"
 
 int main(int argc, char const *argv[])
@@ -42,5 +50,18 @@ int main(int argc, char const *argv[])
         perror("accept:");
         exit(-1);
     }
+    /*****read*****/
+    char buf[BUFSIZE];
+    int ret=-1;
+    while (1)
+    {
+        bzero((void *)buf,BUFSIZE);
+        do
+        {
+            
+        } while (condition);
+        
+    }
+    
     return 0;
 }
