@@ -2,12 +2,13 @@
  * @Author: shuxiansheng shuxianshengio@126.com
  * @Date: 2025-12-30 14:28:00
  * @LastEditors: shuxiansheng shuxianshengio@126.com
- * @LastEditTime: 2026-01-04 15:50:33
+ * @LastEditTime: 2026-01-04 16:00:33
  * @FilePath: /代码/C代码/多线程并发/sever.c
  * @Description:
  */
 #include "net.h"
 
+void *client_hander(void *arg);
 int main(int argc, char const *argv[])
 {
     int i = 0;
