@@ -2,7 +2,7 @@
  * @Author: shuxiansheng shuxianshengio@126.com
  * @Date: 2025-12-30 14:28:00
  * @LastEditors: shuxiansheng shuxianshengio@126.com
- * @LastEditTime: 2025-12-31 09:58:02
+ * @LastEditTime: 2026-01-04 09:36:50
  * @FilePath: /代码/C代码/tcp实现/sever.c
  * @Description:
  */
@@ -17,6 +17,10 @@ int main(int argc, char const *argv[])
         perror("socket: ");
         exit(-1);
     }
+
+    /*******允许服务器在端口仍处于 TIME_WAIT 时重新 bind********/
+    int opt = 1;
+    setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt));
 
     /*******bind设置*******/
     struct sockaddr_in sin;
