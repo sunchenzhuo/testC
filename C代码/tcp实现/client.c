@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
     /*******填充 sockaddr_in********/
     sin.sin_family = AF_INET;
     sin.sin_port = htons(SER_PORT);
-#if 0:
+#if 0
     sin.sin_addr=inet_addr(SER_ADDR);
 #else
     if (inet_pton(AF_INET, SER_ADDR, (void *)&sin.sin_addr) == 0)
